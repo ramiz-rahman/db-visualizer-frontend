@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import * as API from './api';
+
 import Table from './components/Table';
 import './App.css';
 
@@ -10,40 +12,18 @@ class App extends Component {
     joined: [],
   };
 
-  componentDidMount() {
-    const api = 'http://localhost:3000';
-    const headers = {
-      Accept: 'application/json',
-    };
+  async componentDidMount() {
+    const phones = await API.getPhones();
+    if (phones) this.setState({ phones });
 
-    fetch(`${api}/phones`, { headers })
-      .then((res) => res.json())
-      .then(
-        (data) => this.setState({ phones: data }),
-        (error) => this.setState({ error })
-      );
-
-    fetch(`${api}/specs`, { headers })
-      .then((res) => res.json())
-      .then(
-        (data) => this.setState({ specs: data }),
-        (error) => this.setState({ error })
-      );
+    const specs = await API.getSpecs();
+    if (specs) this.setState({ specs });
   }
 
   innerJoin = async () => {
     console.log('INNER JOIN');
-    const api = 'http://localhost:3000';
-    const headers = {
-      Accept: 'application/json',
-    };
-
-    fetch(`${api}/innerjoin`, { headers })
-      .then((res) => res.json())
-      .then(
-        (data) => this.setState({ joined: data.results }),
-        (error) => this.setState({ error })
-      );
+    const joined = await API.getInnerJoin();
+    if (joined) this.setState({ joined });
   };
 
   render() {
