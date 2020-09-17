@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as API from './api';
 
 import Table from './components/Table';
+import Footer from './components/Footer';
 import './App.css';
 
 class App extends Component {
@@ -82,6 +83,7 @@ class App extends Component {
             <Table headers={joinedHeaders} items={joined} />
           ) : null}
         </div>
+        <Footer />
       </div>
     );
   }
