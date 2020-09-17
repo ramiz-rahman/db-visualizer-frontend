@@ -7,6 +7,7 @@ class App extends Component {
     error: null,
     phones: [],
     specs: [],
+    joined: [],
   };
 
   componentDidMount() {
@@ -30,11 +31,29 @@ class App extends Component {
       );
   }
 
+  innerJoin = async () => {
+    console.log('INNER JOIN');
+    const api = 'http://localhost:3000';
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    fetch(`${api}/innerjoin`, { headers })
+      .then((res) => res.json())
+      .then(
+        (data) => this.setState({ joined: data.results }),
+        (error) => this.setState({ error })
+      );
+  };
+
   render() {
-    const { phones, specs } = this.state;
+    console.log(this.state);
+    const { phones, specs, joined } = this.state;
     const phoneHeaders =
       phones.length > 0 ? Object.keys(phones[0]) : null;
     const specHeaders = specs.length > 0 ? Object.keys(specs[0]) : null;
+    const joinedHeaders =
+      joined.length > 0 ? Object.keys(joined[0]) : null;
     return (
       <div className="App">
         <div>
@@ -47,6 +66,15 @@ class App extends Component {
           <h2>Specs</h2>
           {specHeaders ? (
             <Table headers={specHeaders} items={specs} />
+          ) : null}
+        </div>
+        <div>
+          <button onClick={this.innerJoin.bind(this)}>
+            Inner Join
+          </button>
+          <h2>Joined</h2>
+          {joinedHeaders ? (
+            <Table headers={joinedHeaders} items={joined} />
           ) : null}
         </div>
       </div>
