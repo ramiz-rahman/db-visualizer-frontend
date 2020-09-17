@@ -26,6 +26,24 @@ class App extends Component {
     if (joined) this.setState({ joined });
   };
 
+  leftOuterJoin = async () => {
+    console.log('LEFT OUTER JOIN');
+    const joined = await API.getLeftOuterJoin();
+    if (joined) this.setState({ joined });
+  };
+
+  rightOuterJoin = async () => {
+    console.log('RIGHT OUTER JOIN');
+    const joined = await API.getRightOuterJoin();
+    if (joined) this.setState({ joined });
+  };
+
+  fullJoin = async () => {
+    console.log('FULL JOIN');
+    const joined = await API.getFullJoin();
+    if (joined) this.setState({ joined });
+  };
+
   render() {
     console.log(this.state);
     const { phones, specs, joined } = this.state;
@@ -52,6 +70,13 @@ class App extends Component {
           <button onClick={this.innerJoin.bind(this)}>
             Inner Join
           </button>
+          <button onClick={this.leftOuterJoin.bind(this)}>
+            Left Outer Join
+          </button>
+          <button onClick={this.rightOuterJoin.bind(this)}>
+            Right Outer Join
+          </button>
+          <button onClick={this.fullJoin.bind(this)}>Full Join</button>
           <h2>Joined</h2>
           {joinedHeaders ? (
             <Table headers={joinedHeaders} items={joined} />
