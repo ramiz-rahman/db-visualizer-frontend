@@ -1,16 +1,18 @@
 /* BLOCK */
 .Table {
   border-collapse: collapse;
+  margin: 0 auto;
 }
 
 /* ELEMENT */
 .Table__Cell {
-  border: 1px solid #999;
+  border: 1px solid var(--secondary);
   padding: 0.5rem;
   text-align: left;
 }
 
 .Table__Header {
   text-transform: uppercase;
-  background-color: #ccc;
+  background-color: var(--blue);
+  color: var(--white);
 }
