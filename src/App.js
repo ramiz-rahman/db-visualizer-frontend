@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import * as API from './api';
 
+import './App.css';
+import './AppDark.css';
+
 import Table from './components/Table';
 import Footer from './components/Footer';
-import './App.css';
 import Info from './components/Info';
+import Switch from './components/Switch';
 
 class App extends Component {
   state = {
+    darkMode: false,
     error: null,
     phones: [],
     specs: [],
@@ -22,6 +26,10 @@ class App extends Component {
     const specs = await API.getSpecs();
     if (specs) this.setState({ specs });
   }
+
+  toggleDarkMode = () => {
+    this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
+  };
 
   innerJoin = async () => {
     console.log('INNER JOIN');
@@ -94,17 +102,26 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
-    const { phones, specs, joined, type } = this.state;
+    let theme = `App`;
+    if (this.state.darkMode) theme += ` App_dark`;
+
+    const { phones, specs, joined, type, darkMode } = this.state;
     const phoneHeaders =
       phones.length > 0 ? Object.keys(phones[0]) : null;
     const specHeaders = specs.length > 0 ? Object.keys(specs[0]) : null;
     const joinedHeaders =
       joined.length > 0 ? Object.keys(joined[0]) : null;
     return (
-      <div className="App">
+      <div className={theme}>
         <header className="Header">
           <h1 className="Header__H1">Relational Algebra Visualizer</h1>
+          <div className="Header__Switch">
+            <p>Dark Mode</p>
+            <Switch
+              onSwitch={this.toggleDarkMode.bind(this)}
+              checked={darkMode}
+            />
+          </div>
         </header>
         <main className="App__Grid">
           <section className="App__GridArea_a">

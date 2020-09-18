@@ -1,10 +1,10 @@
-.App {
+.App_dark {
   /* Welcome Violet */
   --primary: #702bd5;
 
   /* Electric Purple */
   --secondary: #ba27e4;
-  --secondary-light: rgba(186, 39, 228, 0.5);
+  --secondary-light: rgba(186, 39, 228, 0.7);
 
   /* Milton Blue */
   --blue: #392ecf;
@@ -26,27 +26,27 @@
   --amber-light: #ffff81;
   --amber-dark: #c8a415;
 
-  --white: rgba(255, 255, 255);
-  --gray-50: rgb(242, 242, 247);
-  --gray-100: rgb(229, 229, 234);
-  --gray-200: rgb(209, 209, 214);
-  --gray-300: rgb(199, 199, 204);
-  --gray-400: rgb(174, 174, 178);
+  --white: rgba(255, 255, 255, 0.87);
+  --gray-50: rgb(28, 28, 30);
+  --gray-100: rgb(44, 44, 46);
+  --gray-200: rgb(58, 58, 60);
+  --gray-300: rgb(72, 72, 74);
+  --gray-400: rgb(99, 99, 102);
   --gray-500: rgb(142, 142, 147);
-  --gray-600: rgb(99, 99, 102);
-  --gray-700: rgb(72, 72, 74);
-  --gray-800: rgb(58, 58, 60);
-  --gray-850: rgb(44, 44, 46);
-  --gray-900: rgb(28, 28, 30);
+  --gray-600: rgb(174, 174, 178);
+  --gray-700: rgb(199, 199, 204);
+  --gray-800: rgb(209, 209, 214);
+  --gray-850: rgb(229, 229, 234);
+  --gray-900: rgb(242, 242, 247);
 
   --text-color: var(--gray-800);
-  --text-color-dark: var(--gray-800);
-  --button-disabled-ink-color: rgba(0, 0, 0, 0.37);
+  --text-color-dark: var(--gray-200);
+  --button-disabled-ink-color: rgba(255, 255, 255, 0.37);
 
-  --background-color-1: white;
-  --background-color-2: white;
-  --background-color-3: white;
-  --background-color-4: white;
+  --background-color-1: var(--gray-50);
+  --background-color-2: var(--gray-200);
+  --background-color-3: var(--gray-300);
+  --background-color-4: var(--gray-400);
 
   --elevation-baseline-color: black;
   --elevation-umbra-opacity: 0.2;

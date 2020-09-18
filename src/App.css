@@ -45,6 +45,7 @@
 
 .Header {
   padding: 1rem;
+  position: relative;
 }
 
 .Header__H1 {
@@ -54,6 +55,18 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+}
+
+.Header__Switch {
+  background: var(--secondary-light);
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  top: 1rem;
+  left: 0;
+  padding: 0.5rem;
 }
 
 .ButtonGroup {
