@@ -63,3 +63,25 @@ export const getDifference = () => {
 export const getCrossJoin = () => {
   return getJoinedItems('crossjoin');
 };
+
+// export const enableTrigger = () => {
+//   return fetch(`${api}/trigger`, { method: 'POST', headers })
+//     .then((res) => res.json())
+//     .then(
+//       (data) => data.results,
+//       (error) => error
+//     );
+// };
+
+export const addPhone = (phone) => {
+  return fetch(`${api}/phone`, {
+    method: 'POST',
+    headers: { ...headers, 'Content-Type': 'application/json' },
+    body: JSON.stringify(phone),
+  })
+    .then((res) => res.json())
+    .then(
+      (data) => data.results,
+      (error) => error
+    );
+};

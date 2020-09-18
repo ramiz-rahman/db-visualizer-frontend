@@ -8,6 +8,7 @@ import Table from './components/Table';
 import Footer from './components/Footer';
 import Info from './components/Info';
 import Switch from './components/Switch';
+import AddPhone from './components/AddPhone';
 
 class App extends Component {
   state = {
@@ -101,6 +102,18 @@ class App extends Component {
       });
   };
 
+  enableTrigger = async () => {
+    console.log('ENABLE TRIGGER');
+    this.setState({ joined: [], type: 'Trigger' });
+  };
+
+  addPhone = async (phone) => {
+    console.log('ADD PHONE', phone);
+    await API.addPhone(phone);
+    await this.setState({ type: 'Triggered' });
+    await this.componentDidMount();
+  };
+
   render() {
     let theme = `App`;
     if (this.state.darkMode) theme += ` App_dark`;
@@ -186,10 +199,21 @@ class App extends Component {
               >
                 Full Join
               </button>
+              <button
+                className="Button"
+                onClick={this.enableTrigger.bind(this)}
+              >
+                Trigger
+              </button>
             </div>
             <Info type={type} />
 
             <h2>{type}</h2>
+
+            {type === 'Trigger' ? (
+              <AddPhone onSubmit={this.addPhone.bind(this)} />
+            ) : null}
+
             {joinedHeaders ? (
               <Table headers={joinedHeaders} items={joined} />
             ) : null}
