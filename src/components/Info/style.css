@@ -1,0 +1,19 @@
+.Info {
+  text-align: left;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.Info__Text {
+  width: 60%;
+  max-width: 60ch;
+}
+
+.Info__Diagram {
+  min-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

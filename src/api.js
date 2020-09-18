@@ -47,3 +47,19 @@ export const getRightOuterJoin = () => {
 export const getFullJoin = () => {
   return getJoinedItems('fulljoin');
 };
+
+export const getUnion = () => {
+  return getJoinedItems('union');
+};
+
+export const getIntersection = () => {
+  return getJoinedItems('intersection');
+};
+
+export const getDifference = () => {
+  return getJoinedItems('difference');
+};
+
+export const getCrossJoin = () => {
+  return getJoinedItems('crossjoin');
+};

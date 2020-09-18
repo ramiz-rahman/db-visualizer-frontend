@@ -6,8 +6,8 @@
 
 /* ELEMENT */
 .Table__Cell {
-  border: 1px solid var(--secondary);
-  padding: 0.5rem;
+  border: 1px dotted var(--secondary);
+  padding: 0.4rem 0.6rem;
   text-align: left;
 }
 

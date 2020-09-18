@@ -4,6 +4,7 @@ import * as API from './api';
 import Table from './components/Table';
 import Footer from './components/Footer';
 import './App.css';
+import Info from './components/Info';
 
 class App extends Component {
   state = {
@@ -52,6 +53,46 @@ class App extends Component {
       });
   };
 
+  union = async () => {
+    console.log('UNION');
+    const joined = await API.getUnion();
+    if (joined)
+      this.setState({
+        joined: joined,
+        type: 'Union',
+      });
+  };
+
+  intersection = async () => {
+    console.log('INTERSECTION');
+    const joined = await API.getIntersection();
+    if (joined)
+      this.setState({
+        joined: joined,
+        type: 'Intersection',
+      });
+  };
+
+  difference = async () => {
+    console.log('DIFFERENCE');
+    const joined = await API.getDifference();
+    if (joined)
+      this.setState({
+        joined: joined,
+        type: 'Difference',
+      });
+  };
+
+  crossJoin = async () => {
+    console.log('CROSS JOIN');
+    const joined = await API.getCrossJoin();
+    if (joined)
+      this.setState({
+        joined: joined,
+        type: 'Cross Join / Cartesian Product',
+      });
+  };
+
   render() {
     console.log(this.state);
     const { phones, specs, joined, type } = this.state;
@@ -82,6 +123,30 @@ class App extends Component {
             <div className="ButtonGroup">
               <button
                 className="Button"
+                onClick={this.union.bind(this)}
+              >
+                Union
+              </button>
+              <button
+                className="Button"
+                onClick={this.intersection.bind(this)}
+              >
+                Intersection
+              </button>
+              <button
+                className="Button"
+                onClick={this.difference.bind(this)}
+              >
+                Difference
+              </button>
+              <button
+                className="Button"
+                onClick={this.crossJoin.bind(this)}
+              >
+                Cartesian Product
+              </button>
+              <button
+                className="Button"
                 onClick={this.innerJoin.bind(this)}
               >
                 Inner Join
@@ -105,6 +170,7 @@ class App extends Component {
                 Full Join
               </button>
             </div>
+            <Info type={type} />
 
             <h2>{type}</h2>
             {joinedHeaders ? (
