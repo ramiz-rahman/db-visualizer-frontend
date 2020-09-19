@@ -6,6 +6,7 @@ import inner from './inner.png';
 import left_outer from './left_outer.png';
 import right_outer from './right_outer.png';
 import full_outer from './full_outer.png';
+import trigger from './trigger.gif';
 
 const data = {
   INNER_JOIN: {
@@ -127,6 +128,31 @@ It is also called Cross Product or Cross Join.`,
 FROM "Phones"
 CROSS JOIN "Specs";`,
   },
+  TRIGGER: {
+    type: Types.TRIGGER,
+    def: `PostgreSQL Triggers are database callback functions, which are
+     automatically performed/invoked when a specified database event occurs.`,
+    sql: `
+    CREATE FUNCTION add_phone_to_spec() 
+      RETURNS TRIGGER 
+      LANGUAGE PLPGSQL 
+      AS $$
+    BEGIN
+        INSERT INTO "Specs"("name")
+        VALUES(NEW."name");
+  
+        RETURN NEW;
+    END;
+      $$
+
+    CREATE  TRIGGER  "phone_to_spec"
+    AFTER INSERT
+    ON "Phones"
+    FOR EACH ROW
+      EXECUTE PROCEDURE add_phone_to_spec();
+    `,
+    img: trigger,
+  },
 };
 
 const getData = (type) => {
@@ -140,6 +166,7 @@ const getData = (type) => {
   else if (type === Types.INTERSECTION) return data['INTERSECTION'];
   else if (type === Types.DIFFERENCE) return data['DIFFERENCE'];
   else if (type === Types.CROSS_JOIN) return data['CROSS_JOIN'];
+  else if (type === Types.TRIGGER) return data['TRIGGER'];
 };
 
 const Info = ({ type }) => {
@@ -148,8 +175,8 @@ const Info = ({ type }) => {
   return data ? (
     <div className="Info">
       <div className="Info__Text">
-        <h5>Relational Algebra</h5>
-        <p>{data.relAlg}</p>
+        {data.relAlg && <h5>Relational Algebra</h5>}
+        {data.relAlg && <p>{data.relAlg}</p>}
 
         <h5>Definition</h5>
         <p>{data.def}</p>

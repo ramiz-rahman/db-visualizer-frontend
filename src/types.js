@@ -7,6 +7,7 @@ const Types = {
   INTERSECTION: 'Intersection',
   DIFFERENCE: 'Difference',
   CROSS_JOIN: 'Cross Join / Cartesian Product',
+  TRIGGER: 'Trigger',
 };
 
 Object.freeze(Types);

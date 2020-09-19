@@ -137,19 +137,19 @@ class App extends Component {
           </div>
         </header>
         <main className="App__Grid">
-          <section className="App__GridArea_a">
+          <section className="App__GridArea_a App__a">
             <h2>Phones</h2>
             {phoneHeaders ? (
               <Table headers={phoneHeaders} items={phones} />
             ) : null}
           </section>
-          <section className="App__GridArea_a">
+          <section className="App__GridArea_a App__b">
             <h2>Specs</h2>
             {specHeaders ? (
               <Table headers={specHeaders} items={specs} />
             ) : null}
           </section>
-          <section className="App__GridArea_b">
+          <section className="App__GridArea_b App__c">
             <div className="ButtonGroup">
               <button
                 className="Button"
