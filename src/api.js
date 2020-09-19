@@ -1,4 +1,5 @@
-const api = 'http://localhost:3000';
+// const api = 'http://localhost:3000';
+const api = 'https://database-visualizer-api.herokuapp.com';
 
 const headers = {
   Accept: 'application/json',
@@ -63,15 +64,6 @@ export const getDifference = () => {
 export const getCrossJoin = () => {
   return getJoinedItems('crossjoin');
 };
-
-// export const enableTrigger = () => {
-//   return fetch(`${api}/trigger`, { method: 'POST', headers })
-//     .then((res) => res.json())
-//     .then(
-//       (data) => data.results,
-//       (error) => error
-//     );
-// };
 
 export const addPhone = (phone) => {
   return fetch(`${api}/phone`, {
