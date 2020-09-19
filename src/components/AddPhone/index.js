@@ -33,7 +33,7 @@ class CommentForm extends Component {
     e.preventDefault();
     let value = e.target.value;
     value = parseFloat(value);
-    if (value === NaN) this.setState({ size: 0 });
+    if (isNaN(value)) this.setState({ size: 0 });
     else this.setState({ size: value });
   };
 

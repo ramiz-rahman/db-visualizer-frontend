@@ -185,7 +185,7 @@ const Info = ({ type }) => {
         <pre>{data.sql}</pre>
       </div>
       <div className="Info__Diagram">
-        {data.img ? <img src={data.img} /> : null}
+        {data.img ? <img src={data.img} alt={data.def} /> : null}
       </div>
     </div>
   ) : null;

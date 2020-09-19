@@ -19,7 +19,7 @@ const Footer = (props) => {
 
       <section className="Footer__Items">
         <a
-          href="#"
+          href="https://github.com/ramiz-rahman/db-visualizer-frontend"
           target="_blank"
           rel="noopener noreferrer"
           className="Footer__Link"
